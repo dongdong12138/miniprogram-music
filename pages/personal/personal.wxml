@@ -25,7 +25,11 @@
     </view>
   </view>
 
-  <view class="cover-container">
+  <view
+		style="transform: {{coverTransform}}; transition: {{coveTransition}}"
+		class="cover-container"
+		bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd"
+	>
 
     <image class="arc" src="/static/images/personal/arc.png"></image>
 

@@ -1,6 +1,7 @@
 {
   "pages": [
-		"pages/personal/personal",
+		"pages/login/login",
+    "pages/personal/personal",
     "pages/index/index",
     "pages/video/video"
   ],
@@ -8,8 +9,8 @@
     "navigationBarBackgroundColor": "#d43c33",
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "糯米音乐"
-	},
-	"tabBar": {
+  },
+  "tabBar": {
     "color": "#333",
     "selectedColor": "#d43c33",
     "backgroundColor": "#fff",

@@ -85,18 +85,22 @@ Page({
 		let result = await request('/login/cellphone', { phone, password, isLogin: true })
 		if (result.code === 200) {
 			wx.showToast({ title: '登录成功' })
-			// 将用户的信息存储至本地
-			wx.setStorageSync('userInfo', JSON.stringify(result.profile))
-			// 跳转至个人中心页
-			wx.reLaunch({ url: '/pages/personal/personal' })
+			this.reLaunchPersonal(result.profile)
 		} else if (result.code === 400) {
 			wx.showToast({ title: '手机号错误', icon: 'none' })
 		} else if (result.code === 502) {
 			wx.showToast({ title: '密码错误', icon: 'none' })
 		} else {
 			wx.showToast({ title: '登录失败，请重新登录', icon: 'none' })
-			// 跳转至个人中心页
-			wx.reLaunch({ url: '/pages/personal/personal' })
+			// 若登录失败，使用测试数据作为用户信息
+			let result = await request('/user/detail?uid=32953014')
+			this.reLaunchPersonal(result.profile)
 		}
 	},
+	reLaunchPersonal(userInfo={}) {
+		// 将用户的信息存储至本地
+		wx.setStorageSync('userInfo', JSON.stringify(userInfo))
+		// 跳转至个人中心页
+		wx.reLaunch({ url: '/pages/personal/personal' })
+	}
 })

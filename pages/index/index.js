@@ -12,7 +12,8 @@ Page({
 			{icon: 'icon-meirituijian', text: '每日推荐'}, {icon: 'icon-gedan1', text: '歌单'}, {icon: 'icon-icon-ranking', text: '排行榜'},
 			{icon: 'icon-diantai', text: '电台'}, {icon: 'icon-zhiboguankanliangbofangsheyingshexiangjixianxing', text: '直播'},
 		],
-		recommendList: []
+		recommendList: [],
+		topList: []
   },
 
   /**
@@ -23,6 +24,18 @@ Page({
 		let bannerListData = await request('/banner', {type: 2})
 		// 获取推荐歌单数据
 		let recommendListData = await request('/personalized', {limit: 10})
+		// 获取排行榜数据
+		let index = 0
+		let resultArr = []
+		while (index < 5) {
+			let topListData = await request('/top/list', {idx: index++})
+			let topListItem = {
+				name: topListData.playlist.name,
+				tracks: topListData.playlist.tracks.slice(0, 3)
+			}
+			resultArr.push(topListItem)
+			this.setData({topList: resultArr})
+		}
 		
     this.setData({
 			bannerList: bannerListData.banners,

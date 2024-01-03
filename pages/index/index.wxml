@@ -26,4 +26,21 @@
 		</scroll-view>
 	</view>
 
+	<!-- 排行榜 -->
+  <view class="topList">
+    <NavHeader title="排行榜" nav="热歌风向标" />
+    <swiper class="topListSwiper" circular next-margin="50rpx" previous-margin="50rpx">
+      <swiper-item wx:for="{{topList}}" wx:key="name">
+        <view class="swiperItem">
+          <view class="title">{{item.name}}</view>
+          <view class="musicItem" wx:for="{{item.tracks}}" wx:key="id" wx:for-item="musicItem">
+            <image src="{{musicItem.al.picUrl}}"></image>
+            <text class="count">{{index + 1}}</text>
+            <text class="musicName">{{musicItem.name}}</text>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
 </view>

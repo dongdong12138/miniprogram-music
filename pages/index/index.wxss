@@ -59,3 +59,42 @@
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
 }
+
+/* 排行榜  */
+.topList {
+  padding: 20rpx;
+}
+.topListSwiper {
+  height: 440rpx;
+}
+.swiperItem {
+  width: 96%;
+  background: #fbfbfb;
+}
+.swiperItem .title {
+  font-size: 30rpx;
+  line-height: 80rpx;
+}
+.musicItem {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+.musicItem image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 6rpx;
+}
+.musicItem .count {
+  width: 100rpx;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+}
+.musicItem .musicName {
+  height: 100rpx;
+  line-height: 100rpx;
+  max-width: 400rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

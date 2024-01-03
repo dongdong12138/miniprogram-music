@@ -2,8 +2,8 @@
 
 	<!-- 轮播图 -->
 	<swiper indicator-dots indicator-color='ivory' indicator-active-color='#d43c33' class="banners">
-		<swiper-item wx:for="{{3}}" wx:key="index">
-			<image src="/static/images/nvsheng.jpg"></image>
+		<swiper-item wx:for="{{bannerList}}" wx:key="bannerId">
+			<image src="{{item.pic}}"></image>
 		</swiper-item>
 	</swiper>
 

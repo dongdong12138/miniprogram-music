@@ -1,5 +1,9 @@
 @import "/static/iconfont.wxss";
 
+page {
+	height: 100vh;
+}
+
 .container {
   height: 100%;
   display: flex;

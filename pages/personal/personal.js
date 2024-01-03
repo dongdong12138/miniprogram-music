@@ -10,13 +10,18 @@ Page({
 	data: {
 		coverTransform: 'translateY(0)',
 		coveTransition: '',
+		userInfo: {}
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad(options) {
-
+		// 读取用户的基本信息
+		let userInfo = wx.getStorageSync('userInfo')
+		if (userInfo) {
+			this.setData({ userInfo: JSON.parse(userInfo) })
+		}
 	},
 
 	/**
@@ -67,6 +72,10 @@ Page({
 	onShareAppMessage() {
 
 	},
+
+	toLogin(){
+    wx.navigateTo({ url: '/pages/login/login' })
+  },
 
 	handleTouchStart(event) {
 		this.setData({ coveTransition: '' })

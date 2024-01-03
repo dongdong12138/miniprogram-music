@@ -7,7 +7,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-		bannerList: []
+		bannerList: [],
+		iconList: [
+			{icon: 'icon-meirituijian', text: '每日推荐'}, {icon: 'icon-gedan1', text: '歌单'}, {icon: 'icon-icon-ranking', text: '排行榜'},
+			{icon: 'icon-diantai', text: '电台'}, {icon: 'icon-zhiboguankanliangbofangsheyingshexiangjixianxing', text: '直播'},
+		]
   },
 
   /**

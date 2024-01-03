@@ -1,3 +1,5 @@
+import request from '../../utils/request'
+
 let startY = 0				// 手指起始的坐标
 let moveY = 0					// 手指移动的坐标
 let moveDistance = 0	// 手指移动的距离
@@ -10,7 +12,8 @@ Page({
 	data: {
 		coverTransform: 'translateY(0)',
 		coveTransition: '',
-		userInfo: {}
+		userInfo: {},
+		recentPlayList: []
 	},
 
 	/**
@@ -21,6 +24,7 @@ Page({
 		let userInfo = wx.getStorageSync('userInfo')
 		if (userInfo) {
 			this.setData({ userInfo: JSON.parse(userInfo) })
+			this.getUserRecentPlayList(this.data.userInfo.userId)
 		}
 	},
 
@@ -90,5 +94,17 @@ Page({
 	},
 	handleTouchEnd() {
 		this.setData({ coverTransform: `translateY(0rpx)`, coveTransition: 'transform 0.25s linear' })
+	},
+
+	// 获取用户播放记录
+	async getUserRecentPlayList(userId) {
+		let recentPlayListData = await request('/user/record', { uid: userId, type: 0 })
+		console.log('recentPlayListData:', recentPlayListData)
+		let index = 0
+		let recentPlayList = recentPlayListData?.allData?.splice(0, 10).map(item => {
+			item.id = index++
+			return item
+		})
+		recentPlayList && this.setData({ recentPlayList })
 	},
 })

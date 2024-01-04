@@ -6,8 +6,16 @@ export default (url, data = {}, method = 'GET') => {
 			url: config.host + url,
 			data,
 			method,
+			header: {
+        cookie: wx.getStorageSync('cookies') ? wx.getStorageSync('cookies').find(item => item.indexOf('MUSIC_U') !== -1) : ''
+      },
 			success: (res) => {
 				// console.log('请求成功:', res)
+				// 登录
+				if (data.isLogin) {
+					console.log('登录 res：', res)
+          wx.setStorage({ key: 'cookies', data: res.cookies })
+        }
 				resolve(res.data)
 			},
 			fail: (err) => {

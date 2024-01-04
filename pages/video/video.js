@@ -8,6 +8,7 @@ Page({
   data: {
 		videoGroupList: [],
 		navId: '',
+		videoList: [],
   },
 
   /**
@@ -15,48 +16,6 @@ Page({
    */
   onLoad(options) {
 		this.getVideoGroupListData()
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
   },
 
   /**
@@ -72,11 +31,27 @@ Page({
   	this.setData({
   		videoGroupList: videoGroupListData.data.slice(0, 14),
   		navId: videoGroupListData.data[0].id
-  	})
+		})
+    this.getVideoList(this.data.navId)
 	},
+	// 获取视频列表数据
+  async getVideoList(navId) {
+    if (!navId) return
+		let videoListData = await request('/video/group', {id: navId})
+		console.log('videoListData:', videoListData)
+    wx.hideLoading()
+    let index = 0
+    let videoList = videoListData.datas.map(item => {
+      item.id = index++
+      return item
+    })
+    this.setData({ videoList, isTriggered: false })
+  },
 	// 点击切换导航
 	changeNav(event) {
 		let navId = event.currentTarget.id
 		this.setData({ navId: navId >>> 0, videoList: [] })
+    wx.showLoading({ title: '正在加载' })
+    this.getVideoList(this.data.navId)
 	},
 })

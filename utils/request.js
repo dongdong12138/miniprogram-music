@@ -13,7 +13,6 @@ export default (url, data = {}, method = 'GET') => {
 				// console.log('请求成功:', res)
 				// 登录
 				if (data.isLogin) {
-					console.log('登录 res：', res)
           wx.setStorage({ key: 'cookies', data: res.cookies })
         }
 				resolve(res.data)

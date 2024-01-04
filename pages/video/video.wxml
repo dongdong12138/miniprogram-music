@@ -1,2 +1,17 @@
-<!--pages/video/video.wxml-->
-<text>pages/video/video.wxml</text>
+<view class="videoContainer">
+
+	<!-- 头部 -->
+	<view class="header">
+		<image src="/static/images/video/video.jpg"></image>
+		<view class="search" bindtap="toSearch">搜索音乐</view>
+		<image src="/static/images/logo.png"></image>
+	</view>
+
+	<!-- 导航 -->
+	<scroll-view scroll-x enable-flex scroll-into-view="{{'scroll' + navId}}" scroll-with-animation class="navScroll">
+		<view wx:for="{{videoGroupList}}" wx:key="id" id="{{'scroll' + item.id}}" class="navItem">
+			<view id="{{item.id}}" class="navContent {{navId === item.id ? 'active' : ''}}" bindtap="changeNav">{{item.name}}</view>
+		</view>
+	</scroll-view>
+
+</view>

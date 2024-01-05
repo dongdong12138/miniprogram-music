@@ -17,7 +17,7 @@ Page({
   onLoad(options) {
 		const musicId = options.musicId
 		this.setData({ musicId })
-		
+
     // 获取音乐详情
 		this.getMusicInfo(musicId)
 

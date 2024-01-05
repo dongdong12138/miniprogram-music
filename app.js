@@ -1,5 +1,9 @@
 // app.js
 App({
+	globalData: {
+    isMusicPlay: false,		// 是否有音乐在播放
+    musicId: ''						// 音乐 id
+  },
   onLaunch() {
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []

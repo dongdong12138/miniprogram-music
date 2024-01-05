@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/songDetail/songDetail",
     "pages/recommendSong/recommendSong",
     "pages/video/video",
     "pages/login/login",
@@ -35,7 +36,8 @@
         "selectedIconPath": "/static/images/tabs/tab-my-current.png"
       }
     ]
-  },
+	},
+	"requiredBackgroundModes": ["audio"],
   "style": "v2",
   "rendererOptions": {
     "skyline": {

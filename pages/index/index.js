@@ -90,5 +90,9 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+	},
+	
+  toRecommendSong(){
+    wx.navigateTo({ url: '/songPackage/pages/recommendSong/recommendSong' })
+  },
 })

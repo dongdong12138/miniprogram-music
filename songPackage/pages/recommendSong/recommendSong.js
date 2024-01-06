@@ -1,5 +1,5 @@
 import PubSub from 'pubsub-js'
-import request from '../../utils/request'
+import request from '../../../utils/request'
 
 Page({
   data: {
